@@ -5,6 +5,7 @@ import { FiMapPin } from "react-icons/fi";
 import { Button } from "@heroui/react";
 import { EditModal } from "@/app/components/EditModal";
 import { DeleteAlert } from "@/app/components/DeleteAlert";
+import BookingCard from "@/app/components/BookingCard";
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -33,8 +34,9 @@ const DestinationDetailsPage = async ({ params }) => {
 
             </div>
 
+
             <Image alt={destination} src={imageUrl} height={500} width={500}></Image>
-            <div className="flex">
+            <div className="flex justify-between">
                 <div>
                     <div className="flex items-center gap-2">
                         <FiMapPin /> <span>{country}</span>
@@ -49,9 +51,9 @@ const DestinationDetailsPage = async ({ params }) => {
                     </div>
                 </div>
 
-                <div>
-                    <h2 className="text-xl font-bold">$ {price}</h2>
-                </div>
+                <BookingCard destination={destination}></BookingCard>
+
+
 
             </div>
             <h2>{category}</h2>
