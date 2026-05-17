@@ -2,6 +2,9 @@
 import { FaRegCalendar } from "react-icons/fa";
 import Image from "next/image";
 import { FiMapPin } from "react-icons/fi";
+import { Button } from "@heroui/react";
+import { EditModal } from "@/app/components/EditModal";
+import { DeleteAlert } from "@/app/components/DeleteAlert";
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -22,6 +25,13 @@ const DestinationDetailsPage = async ({ params }) => {
         <div className="max-w-7xl mx-auto">
             {/* destination details {id}
              */}
+
+
+            <div className="flex text-center gap-3 justify-end">
+                <DeleteAlert destination={destination}></DeleteAlert>
+                <EditModal destination={destination} />
+
+            </div>
 
             <Image alt={destination} src={imageUrl} height={500} width={500}></Image>
             <div className="flex">
