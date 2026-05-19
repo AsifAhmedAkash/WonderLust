@@ -1,9 +1,9 @@
 
 import { headers } from "next/headers";
-import { auth } from "../lib/auth";
+import { auth } from "@/app/lib/auth";
 import Image from "next/image";
 import { Button } from "@heroui/react";
-import { BookingCancelAlart } from "../components/BookingCancelAlart";
+import { BookingCancelAlart } from "@/app/components/BookingCancelAlart";
 import { redirect } from "next/navigation";
 
 const MyBookingsPage = async () => {

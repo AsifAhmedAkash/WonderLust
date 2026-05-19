@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import DestinationCard from "../components/DestinationCard";
+import DestinationCard from "@/app/components/DestinationCard";
 
 const page = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`)

@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertDialog, Button } from "@heroui/react";
-import { authClient } from "../lib/auth-client";
+import { authClient } from "@/app/lib/auth-client";
 
 export function BookingCancelAlart({ bookingId }) {
 

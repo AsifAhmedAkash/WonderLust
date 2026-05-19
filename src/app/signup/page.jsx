@@ -1,7 +1,7 @@
 // import React from 'react';
 "use client";
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
-import { authClient } from "../lib/auth-client";
+import { authClient } from "@/app/lib/auth-client";
 import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
