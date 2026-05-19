@@ -6,10 +6,27 @@ import { Button } from "@heroui/react";
 import { EditModal } from "@/app/components/EditModal";
 import { DeleteAlert } from "@/app/components/DeleteAlert";
 import BookingCard from "@/app/components/BookingCard";
+import { auth } from "@/app/lib/auth";
+import { headers } from "next/headers";
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const res = await fetch(`http://localhost:5000/destination/${id}`)
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    console.log("token", token);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
+
+    if (!res.ok) {
+        const text = await res.text(); // read raw response for debugging
+        console.error("Backend error:", res.status, text);
+        throw new Error(`Failed to fetch destination: ${res.status}`);
+    }
     const destination = await res.json();
     // console.log(destination);
     const {

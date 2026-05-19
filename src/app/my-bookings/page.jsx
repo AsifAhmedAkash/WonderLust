@@ -4,6 +4,7 @@ import { auth } from "../lib/auth";
 import Image from "next/image";
 import { Button } from "@heroui/react";
 import { BookingCancelAlart } from "../components/BookingCancelAlart";
+import { redirect } from "next/navigation";
 
 const MyBookingsPage = async () => {
 
@@ -11,10 +12,20 @@ const MyBookingsPage = async () => {
         headers: await headers() // you need to pass the headers object.
     })
 
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    })
+
     // console.log(session)
     const user = session?.user
 
-    const res = await fetch(`http://localhost:5000/booking/${user.id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user.id}`,
+        {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }
+    )
 
     const bookings = await res.json();
     console.log(bookings);
